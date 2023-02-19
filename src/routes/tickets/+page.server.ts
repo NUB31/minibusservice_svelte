@@ -1,4 +1,4 @@
-import { PrismaClient, type Ticket } from '@prisma/client';
+import { PrismaClient, type Ticket_Group } from '@prisma/client';
 import { error } from '@sveltejs/kit';
 
 const prisma = new PrismaClient();
@@ -6,14 +6,21 @@ const prisma = new PrismaClient();
 /** @type {import('./$types').PageLoad} */
 
 export async function load() {
-	let tickets: Ticket[] | null = null;
+	let ticketGroups: Ticket_Group[] | null = null;
 
 	try {
-		tickets = await prisma.ticket.findMany({
+		ticketGroups = await prisma.ticket_Group.findMany({
 			where: {
 				active: true
 			},
-			orderBy: { created_at: 'desc' }
+			orderBy: { created_at: 'desc' },
+			include: {
+				Tickets: {
+					where: {
+						active: true
+					}
+				}
+			}
 		});
 	} catch (err) {
 		console.error(err);
@@ -23,13 +30,13 @@ export async function load() {
 		});
 	}
 
-	if (tickets.length == 0) {
+	if (ticketGroups.length == 0) {
 		throw error(501, {
 			message: 'No tickets have been created yet.<br>Please come back later'
 		});
 	}
 
 	return {
-		tickets
+		ticketGroups
 	};
 }
