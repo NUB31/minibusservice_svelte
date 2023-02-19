@@ -11,6 +11,11 @@
 	import ContactForm from '$lib/components/contact_form.svelte';
 	import CardCarousel from '$lib/components/card_carousel.svelte';
 	import type { CardCarouselItem } from '$lib/types/CardCarouselItem';
+	import Card from '$lib/components/card.svelte';
+
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	const carouselItems: CardCarouselItem[] = [
 		{
@@ -46,28 +51,54 @@
 	];
 </script>
 
-<section>
-	<img src={header_image} alt="Minibusses lined up in a row" />
+<div class="flex gap-8">
+	<div class="overflow-hidden">
+		<section>
+			<img
+				src={header_image}
+				class="border-2 border-light-contrast rounded-md"
+				alt="Minibusses lined up in a row"
+			/>
 
-	<h1 class="font-semibold mt-4 text-2xl">
-		Med komfort og sikkerhet i førersetet Bli med på en trygg og behagelig tur
-	</h1>
+			<h1 class="font-semibold mt-4 text-xl md:text-2xl">
+				Med komfort og sikkerhet i førersetet<br />Bli med på en trygg og behagelig tur
+			</h1>
 
-	<p class="opacity-70 font-medium mt-2">
-		Minibusservice Stene AS driver personbefordring med taxi, minibuss og busser.<br />Vi har lang
-		erfaring og finner gode løsninger for kundene våre. <br />Kontraktskjøring for helseforetak,
-		busselskap og kommune utgjør størsteparten av oppdragene våre, men vi tilbyr også turer for
-		privatpersoner, bedrifter og turister.<br />Vi er godkjent lærebedrift og setter kunden og
-		miljøet i fokus. Vi har både elektriske, hybride og dieselkjøretøy i flåten.
-	</p>
-</section>
+			<p class="opacity-70 font-medium mt-2 md:text-lg">
+				Minibusservice Stene AS driver personbefordring med taxi, minibuss og busser.<br />Vi har
+				lang erfaring og finner gode løsninger for kundene våre. <br />Kontraktskjøring for
+				helseforetak, busselskap og kommune utgjør størsteparten av oppdragene våre, men vi tilbyr
+				også turer for privatpersoner, bedrifter og turister.<br />Vi er godkjent lærebedrift og
+				setter kunden og miljøet i fokus. Vi har både elektriske, hybride og dieselkjøretøy i flåten
+			</p>
+		</section>
 
-<section>
-	<h1 class="font-semibold mt-8 text-2xl ">Our services</h1>
-	<CardCarousel {carouselItems} />
-</section>
+		<section class="mt-12">
+			<h1 class="font-semibold text-xl md:text-2xl">Our services</h1>
+			<CardCarousel {carouselItems} />
+		</section>
 
-<section>
-	<h1 class="font-semibold mt-8 text-2xl">Contact us</h1>
-	<ContactForm />
-</section>
+		<section class="mt-12">
+			<h1 class="font-semibold text-xl md:text-2xl">Contact us</h1>
+			<ContactForm />
+		</section>
+	</div>
+
+	<section class="w-60 shrink-0">
+		<div class="sticky top-24">
+			<h2 class="text-lg md:text-xl font-semibold text-center">Nytt fra oss</h2>
+			<div class="max-h-[calc(100vh-140px)] flex flex-col gap-4 overflow-y-scroll mt-4">
+				{#each data.news as item}
+					<Card
+						card={{
+							header: item.title,
+							image: item.image,
+							text: item.short_text,
+							url: `/news/${item.slug}`
+						}}
+					/>
+				{/each}
+			</div>
+		</div>
+	</section>
+</div>

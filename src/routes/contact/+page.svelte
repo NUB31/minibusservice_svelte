@@ -3,6 +3,6 @@
 </script>
 
 <section>
-	<h1 class="font-semibold text-2xl">Contact us</h1>
+	<h1 class="font-semibold text-xl md:text-2xl">Contact us</h1>
 	<ContactForm />
 </section>

@@ -8,13 +8,17 @@
 	let rampCarouselItems: string[] = [singleRampLeftClosed, singleRampRightClosed, threeRampsOpen];
 </script>
 
-<h1 class="font-semibold text-2xl">Rullestol</h1>
+<h1 class="font-semibold text-xl md:text-2xl">Rullestol</h1>
 
-<section class="mt-4">
-	<h2 class="font-semibold">Sitter du i rullestol?</h2>
-	<p>
-		Vi har flere busser med rullestolstøtte, med kapasitet opp til 2 rullestoler per buss.
-		<br />Total kapasitet er 5 rullestilbrukere fordelt på 3 busser
-	</p>
-	<ImageCarousel carouselItems={rampCarouselItems} />
+<section class="mt-4 md:flex justify-between gap-5">
+	<div>
+		<h2 class="font-semibold grow text-lg md:text-xl">Sitter du i rullestol?</h2>
+		<p class="md:text-lg">
+			Vi har flere busser med rullestolstøtte, med kapasitet opp til 2 rullestoler per buss.
+			<br />Total kapasitet er 5 rullestilbrukere fordelt på 3 busser
+		</p>
+	</div>
+	<div class="md:w-96">
+		<ImageCarousel carouselItems={rampCarouselItems} />
+	</div>
 </section>

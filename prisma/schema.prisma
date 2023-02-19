@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Ticket {
+  id                String  @id @default(uuid())
+  name              String
+  price_in_cents    Int
+  active            Boolean @default(true)
+  max_orders        Int?
+  sold_out_override Boolean @default(false)
+
+  Ticket_Group    Ticket_Group? @relation(fields: [ticket_Group_id], references: [id])
+  ticket_Group_id String?
+
+  Orders Order[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Ticket_Group {
+  id         String  @id @default(uuid())
+  name       String
+  active     Boolean @default(true)
+  max_orders Int?
+
+  Tickets Ticket[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Message {
+  id      String  @id @default(uuid())
+  name    String
+  phone   String?
+  email   String?
+  message String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model News {
+  id         String  @id @default(uuid())
+  title      String
+  short_text String
+  image      String?
+  slug       String  @unique
+  active     Boolean @default(true)
+  html       String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Order {
+  id       String  @id @default(uuid())
+  name     String
+  email    String
+  phone    String?
+  quantity Int
+  has_paid Boolean
+
+  Tickets Ticket[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  username String
+  password String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}

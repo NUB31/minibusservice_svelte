@@ -12,9 +12,16 @@
 	};
 </script>
 
-<div class="mt-2 border-2 border-light-contrast rounded-md">
-	<img class="w-full max-h-52 object-cover" src={carouselItems[index]} alt="" />
+<div style={`--index: ${index}`} class="inline-flex w-full overflow-hidden mt-2 gap-5">
+	{#each carouselItems as image}
+		<div
+			class="flex shrink-0 flex-col border-2 w-full sm:w-96 border-light-contrast rounded-md carousel transition-transform overflow-hidden"
+		>
+			<img class="w-full object-cover" src={image} alt="" />
+		</div>
+	{/each}
 </div>
+
 {#if carouselItems.length > 1}
 	<div class="flex justify-between mt-2">
 		<button
@@ -27,3 +34,9 @@
 		>
 	</div>
 {/if}
+
+<style>
+	.carousel {
+		transform: translateX(calc((-100% - 20px) * var(--index)));
+	}
+</style>

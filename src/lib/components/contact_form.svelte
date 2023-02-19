@@ -1,18 +1,31 @@
-<div class="text-lg">
-	<p class="opacity-70 font-medium pt-2">
-		Questions?<br />Contact us by phone, email or the form below
-	</p>
-	<a class="text-light-accent hover:underline font-bold block" href="tel:45256161">
-		Phone: +47 45 25 61 61
-	</a>
-	<a
-		class="text-light-accent hover:underline font-bold block"
-		href="mailto:minibusstur@hotmail.com"
-	>
-		Email: minibusstur@hotmail.com
-	</a>
+<div class="md:text-lg flex flex-col md:flex-row mt-2 gap-8">
+	<div class="flex-1 flex flex-col">
+		<p class="opacity-70 font-medium pt-2 block md:hidden">
+			Questions?<br />Contact us by phone, email or by using the form below
+		</p>
+		<p class="opacity-70 font-medium pt-2 hidden md:block">
+			Questions?<br />Contact us by phone, email or by using the form to the right
+		</p>
+		<a class="text-light-accent hover:underline font-bold block" href="tel:45256161">
+			Phone: +47 45 25 61 61
+		</a>
+		<a
+			class="text-light-accent hover:underline font-bold block"
+			href="mailto:minibusstur@hotmail.com"
+		>
+			Email: minibusstur@hotmail.com
+		</a>
 
-	<div class="pt-4">
+		<iframe
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1843.3400114684273!2d6.808636516233512!3d62.48304906129275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4616b121221a7743%3A0x27e6f60384509a8b!2sMinibusservice%20Stene%20AS!5e0!3m2!1sen!2sno!4v1676820496505!5m2!1sen!2sno"
+			class="grow mt-5 border-2 border-light-contrast rounded-md overflow-hidden"
+			loading="lazy"
+			referrerpolicy="no-referrer-when-downgrade"
+			title="Map"
+		/>
+	</div>
+
+	<div class="pt-4 md:pt-0 flex-1">
 		<div class="pt-3 text-xl">
 			<div class="font-semibold">Name:</div>
 			<input
@@ -40,7 +53,7 @@
 		<div class="pt-3 text-xl">
 			<div class="font-semibold">Message:</div>
 			<textarea
-				class="border-2 mt-1 border-light-contrast p-2 rounded-md text-lg h-60 w-full"
+				class="border-2 mt-1 border-light-contrast p-2 rounded-md h-60 w-full"
 				placeholder="Message"
 			/>
 		</div>

@@ -22,26 +22,32 @@
 	let tourBusCarouselItems: string[] = [twoTourBuses, tourBusSide, tourBusSideLogo];
 </script>
 
-<h1 class="font-semibold text-2xl">Busses</h1>
+<h1 class="font-semibold text-xl md:text-2xl">Busses</h1>
 
-<section class="mt-4" id="minibus">
-	<h2 class="font-semibold">Minibusses</h2>
-	<p>
-		Vi har idag fire minibusser, to Mercedes Sprinter og to Ford Transitt. Vi har også en
-		fullelektrisk Mercedes EQV og en Mitsubishi Outlander.<br />Vi finner løsninger for grupper fra
-		5 - 32 passasjerer med støtte for inntil 3 rullestolbrukere samtidig.
-	</p>
-
-	<ImageCarousel carouselItems={minibusCarouselItems} />
+<section id="minibus" class="mt-4 md:flex justify-between gap-5">
+	<div>
+		<h2 class="font-semibold grow text-lg md:text-xl">Minibusses</h2>
+		<p class="md:text-lg">
+			Vi har idag fire minibusser, to Mercedes Sprinter og to Ford Transitt. Vi har også en
+			fullelektrisk Mercedes EQV og en Mitsubishi Outlander.<br />Vi finner løsninger for grupper
+			fra 5 - 32 passasjerer med støtte for inntil 3 rullestolbrukere samtidig
+		</p>
+	</div>
+	<div class="md:w-96">
+		<ImageCarousel carouselItems={minibusCarouselItems} />
+	</div>
 </section>
 
-<section class="mt-8" id="tour">
-	<h2 class="font-semibold">Tour busses</h2>
-	<p>
-		Vi er medeiger i Storfjord Turbuss AS som har tre turbusser.<br />Storfjord Turbuss AS ble
-		etablert i 2018, og vi utfører turkjøring og lager pakkeløsninger etter dine ønsker og behov.<br
-		/>Vår målsetning er å alltid være det naturlige førstevalget av transportør.
-	</p>
-
-	<ImageCarousel carouselItems={tourBusCarouselItems} />
+<section id="tour" class="mt-12 md:flex justify-between gap-5">
+	<div>
+		<h2 class="font-semibold grow text-lg md:text-xl">Tour busses</h2>
+		<p class="md:text-lg">
+			Vi er medeiger i Storfjord Turbuss AS som har tre turbusser.<br />Storfjord Turbuss AS ble
+			etablert i 2018, og vi utfører turkjøring og lager pakkeløsninger etter dine ønsker og behov.<br
+			/>Vår målsetning er å alltid være det naturlige førstevalget av transportør
+		</p>
+	</div>
+	<div class="md:w-96">
+		<ImageCarousel carouselItems={tourBusCarouselItems} />
+	</div>
 </section>

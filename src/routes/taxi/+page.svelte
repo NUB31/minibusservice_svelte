@@ -9,21 +9,29 @@
 	let packageTaxiCarouselItems: string[] = [van];
 </script>
 
-<h1 class="font-semibold text-2xl">Taxi</h1>
+<h1 class="font-semibold text-xl md:text-2xl">Taxi</h1>
 
-<section class="mt-4" id="person">
-	<h2 class="font-semibold">Persontaxi</h2>
-	<p>
-		Vi har taxier som dekker de fleste behov.<br />Rullestoltransport, firehjulstrekk og
-		helelektrisk bil er noen av tilbudene våre.<br />Taxiene våre kan ta opp til 8 passasjerer.
-	</p>
-
-	<ImageCarousel carouselItems={taxiCarouselItems} />
+<section id="person" class="mt-4 md:flex justify-between gap-5">
+	<div>
+		<h2 class="font-semibold grow text-lg md:text-xl">Persontaxi</h2>
+		<p class="md:text-lg">
+			Vi har taxier som dekker de fleste behov.<br />Rullestoltransport, firehjulstrekk og
+			helelektrisk bil er noen av tilbudene våre.<br />Taxiene våre kan ta opp til 8 passasjerer
+		</p>
+	</div>
+	<div class="md:w-96">
+		<ImageCarousel carouselItems={taxiCarouselItems} />
+	</div>
 </section>
 
-<section class="mt-8" id="package">
-	<h2 class="font-semibold">Pakketaxi</h2>
-	<p>Vi har tilbud om pakketaxi. Både småpakker og volumkrevende gods kan transporteres.</p>
-
-	<ImageCarousel carouselItems={packageTaxiCarouselItems} />
+<section id="package" class="mt-12 md:flex justify-between gap-5">
+	<div>
+		<h2 class="font-semibold grow text-lg md:text-xl">Pakketaxi</h2>
+		<p class="md:text-lg">
+			Vi har tilbud om pakketaxi. Både småpakker og volumkrevende gods kan transporteres
+		</p>
+	</div>
+	<div class="md:w-96">
+		<ImageCarousel carouselItems={packageTaxiCarouselItems} />
+	</div>
 </section>
