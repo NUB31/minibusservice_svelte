@@ -7,9 +7,9 @@
 
 <section>
 	<h1 class="font-semibold text-xl md:text-2xl">News from us</h1>
-	<div class="mt-4">
+	<div class="mt-4 flex flex-wrap gap-5">
 		{#each data.news as item}
-			<div class="w-96">
+			<div class="grow">
 				<Card
 					card={{
 						header: item.title,
