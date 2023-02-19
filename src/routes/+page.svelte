@@ -84,7 +84,7 @@
 		</section>
 	</div>
 
-	<section class="w-60 shrink-0">
+	<section class="w-60 shrink-0 hidden lg:block">
 		<div class="sticky top-24">
 			<h2 class="text-lg md:text-xl font-semibold text-center">Nytt fra oss</h2>
 			<div class="max-h-[calc(100vh-140px)] flex flex-col gap-4 overflow-y-scroll mt-4">

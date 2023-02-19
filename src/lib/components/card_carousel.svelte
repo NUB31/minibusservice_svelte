@@ -17,7 +17,7 @@
 
 <div style={`--index: ${index}`} class="inline-flex w-full overflow-hidden mt-4 gap-5">
 	{#each carouselItems as card}
-		<div class="flex shrink-0 sm:w-80 transition-transform carousel ">
+		<div class="flex shrink-0 w-full sm:w-80 transition-transform carousel ">
 			<Card {card} />
 		</div>
 	{/each}

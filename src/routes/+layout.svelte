@@ -115,7 +115,7 @@
 
 	<!-- Main Content -->
 	<main class="p-4 pb-16 pt-8 bg-light-background text-light-contrast z-0 grow flex">
-		<div class="mx-auto max-w-7xl grow">
+		<div class="mx-auto w-full max-w-7xl grow">
 			<slot />
 		</div>
 	</main>

@@ -18,7 +18,7 @@
 
 		<iframe
 			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1843.3400114684273!2d6.808636516233512!3d62.48304906129275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4616b121221a7743%3A0x27e6f60384509a8b!2sMinibusservice%20Stene%20AS!5e0!3m2!1sen!2sno!4v1676820496505!5m2!1sen!2sno"
-			class="grow mt-5 border-2 border-light-contrast rounded-md overflow-hidden"
+			class="grow mt-5 border-2 border-light-contrast rounded-md overflow-hidden hidden md:block"
 			loading="lazy"
 			referrerpolicy="no-referrer-when-downgrade"
 			title="Map"
@@ -65,4 +65,11 @@
 			/>
 		</div>
 	</div>
+	<iframe
+		src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1843.3400114684273!2d6.808636516233512!3d62.48304906129275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4616b121221a7743%3A0x27e6f60384509a8b!2sMinibusservice%20Stene%20AS!5e0!3m2!1sen!2sno!4v1676820496505!5m2!1sen!2sno"
+		class="grow mt-5 border-2 border-light-contrast rounded-md overflow-hidden block md:hidden h-56"
+		loading="lazy"
+		referrerpolicy="no-referrer-when-downgrade"
+		title="Map"
+	/>
 </div>
