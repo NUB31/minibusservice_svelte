@@ -86,9 +86,11 @@
 
 	{#if data.news.length != 0}
 		<section class="w-60 shrink-0 hidden lg:block">
-			<div class="sticky top-24">
+			<div
+				class="sticky top-24 rounded-md border-2 p-2 bg-light-secondary-background border-light-border dark:bg-dark-secondary-background dark:border-dark-border"
+			>
 				<h2 class="text-lg md:text-xl font-semibold text-center">Nytt fra oss</h2>
-				<div class="max-h-[calc(100vh-140px)] flex flex-col gap-4 overflow-y-scroll mt-4">
+				<div class="max-h-[calc(100vh-190px)] flex flex-col gap-4 overflow-y-scroll mt-4">
 					{#each data.news as item}
 						<Card
 							card={{
