@@ -15,8 +15,7 @@ model Ticket {
   max_orders        Int?
   sold_out_override Boolean @default(false)
 
-  Ticket_Group    Ticket_Group? @relation(fields: [ticket_Group_id], references: [id])
-  ticket_Group_id String?
+  Ticket_Groups Ticket_Group[]
 
   Orders Order[]
 

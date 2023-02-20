@@ -1,16 +1,17 @@
 <script lang="ts">
 	import type { CardCarouselItem } from '$lib/types/CardCarouselItem';
 	import Card from '$lib/components/card.svelte';
+	import Button from '$lib/components/button.svelte';
 
 	export let carouselItems: CardCarouselItem[];
 
 	let index = 0;
 
-	const nextImage = () => {
+	const nextCard = () => {
 		index = (index + 1) % carouselItems.length;
 	};
 
-	const previousImage = () => {
+	const previousCard = () => {
 		index = (index - 1 + carouselItems.length) % carouselItems.length;
 	};
 </script>
@@ -24,14 +25,8 @@
 </div>
 
 <div class="flex justify-between mt-2 md:text-lg">
-	<button
-		class="p-2 border-2 border-light-contrast mt-2 w-24 rounded-md transition-colors bg-white hover:bg-light-secondary-background"
-		on:click={previousImage}>Previous</button
-	>
-	<button
-		class="p-2 border-2 border-light-contrast mt-2 w-24 rounded-md transition-colors bg-white hover:bg-light-secondary-background"
-		on:click={nextImage}>Next</button
-	>
+	<Button on:click={previousCard} width={96}>Previous</Button>
+	<Button on:click={nextCard} width={96}>Next</Button>
 </div>
 
 <style>

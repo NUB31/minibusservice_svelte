@@ -4,7 +4,6 @@
 
 	export let data: PageData;
 
-	let clear: NodeJS.Timer;
 	function refreshData() {
 		invalidateAll();
 	}
@@ -15,7 +14,7 @@
 	<div class="mt-4 flex flex-wrap gap-5">
 		{#each data.ticketGroups as ticketGroup}
 			<div class="grow">
-				{ticketGroup.name}
+				<pre>{JSON.stringify(ticketGroup, null, 4)}</pre>
 			</div>
 		{/each}
 	</div>

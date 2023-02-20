@@ -5,11 +5,11 @@
 </script>
 
 <div
-	class="flex shrink-0 flex-col border-2 w-full border-light-contrast rounded-md transition-transform overflow-hidden"
+	class="flex shrink-0 flex-col border-2 w-full rounded-md transition-transform overflow-hidden border-light-contrast dark:border-dark-contrast"
 >
 	{#if card.image}
 		<img
-			class="w-full max-h-44 object-cover border-b-2 border-light-contrast"
+			class="w-full max-h-44 object-cover border-b-2 border-light-contrast dark:border-dark-contrast"
 			src={card.image}
 			alt=""
 		/>
@@ -21,6 +21,9 @@
 		<p class="whitespace-normal grow">
 			{card.text}
 		</p>
-		<a class="font-semibold hi mt-2 hover:underline w-fit" href={card.url}>Read more...</a>
+		<a
+			class="font-semibold hi mt-2 transition-colors hover:text-light-accent dark:hover:text-dark-accent w-fit"
+			href={card.url}>Read more...</a
+		>
 	</div>
 </div>

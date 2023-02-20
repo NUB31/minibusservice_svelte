@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import logoFull from '$lib/assets/logos/logo_full.svg';
+	import logoFullDark from '$lib/assets/logos/logo_full_dark.svg';
 	import homeIcon from '$lib/assets/icons/home_icon.svg';
 	import newsIcon from '$lib/assets/icons/news_icon.svg';
 	import contactIcon from '$lib/assets/icons/contact_icon.svg';
@@ -10,12 +11,17 @@
 	import closeIcon from '$lib/assets/icons/close_icon.svg';
 
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	let menuOpen = false;
-
 	function toggleMenuOpen() {
 		menuOpen = !menuOpen;
 	}
+
+	let darkTheme = true;
+	onMount(() => {
+		darkTheme = document.documentElement.classList.contains('dark');
+	});
 
 	let pages = [
 		{
@@ -63,12 +69,12 @@
 	];
 </script>
 
-<div class="flex flex-col min-h-screen">
+<div class="flex flex-col min-h-screen text-light-contrast dark:text-dark-contrast">
 	<header
-		class="sticky top-0 z-50 shadow-lg bg-white text-light-contrast h-16 flex justify-center border-b-2 border-light-contrast"
+		class="sticky top-0 z-50 shadow-lg h-16 flex justify-center border-b-2 bg-light-secondary-background border-light-contrast dark:bg-dark-secondary-background dark:border-dark-contrast"
 	>
 		<div class="max-w-7xl w-full flex flex-row p-4">
-			<img src={logoFull} alt="Minibusservice Logo" />
+			<img src={darkTheme ? logoFullDark : logoFull} alt="Minibusservice Logo" />
 			<div class="flex justify-end items-center grow">
 				<ul
 					class="hidden lg:flex flex-row grow gap-10 uppercase font-medium md:text-lg justify-end"
@@ -78,7 +84,7 @@
 							<a
 								class={`${
 									`/${$page.url.pathname.split('/')[1]}` == link.url && 'border-b-2'
-								} border-b-0 border-light-accent`}
+								} border-b-0 transition-colors border-light-accent dark:border-dark-accent hover:text-light-accent dark:hover:text-dark-accent`}
 								href={link.url}>{link.text}</a
 							>
 						</li>
@@ -88,14 +94,14 @@
 					<img
 						src={menuOpen ? closeIcon : menuIcon}
 						alt={menuOpen ? 'Close side menu' : 'Open side menu'}
-						class="w-8"
+						class={`w-8 ${darkTheme && 'invert'}`}
 					/>
 				</button>
 			</div>
 		</div>
 	</header>
 	<nav
-		class={`bg-white w-56 lg:w-96 h-full transition-transform fixed top-16 right-0 bottom-14 sm:bottom-0 z-40 shadow-lg px-4 py-8 border-l-2 border-light-contrast ${
+		class={`w-56 lg:w-96 h-full transition-transform fixed top-16 right-0 bottom-14 sm:bottom-0 z-40 shadow-lg px-4 py-8 border-l-2 border-light-contrast bg-light-secondary-background dark:bg-dark-secondary-background dark:border-dark-contrast ${
 			menuOpen ? 'translate-x-0' : 'translate-x-56 lg:translate-x-96'
 		}`}
 	>
@@ -105,7 +111,7 @@
 					<a
 						class={`${
 							`/${$page.url.pathname.split('/')[1]}` == link.url && 'border-b-2'
-						} border-b-0 border-light-accent`}
+						} border-b-0 transition-colors border-light-accent dark:border-dark-accent hover:text-light-accent dark:hover:text-dark-accent`}
 						href={link.url}>{link.text}</a
 					>
 				</li>
@@ -114,13 +120,15 @@
 	</nav>
 
 	<!-- Main Content -->
-	<main class="p-4 pb-16 pt-8 bg-light-background text-light-contrast z-0 grow flex">
+	<main class="p-4 pb-16 pt-8 z-0 grow flex bg-light-background dark:bg-dark-background">
 		<div class="mx-auto w-full max-w-7xl grow">
 			<slot />
 		</div>
 	</main>
 
-	<footer class="bg-light-contrast text-light-background px-2 py-8 flex flex-col items-center">
+	<footer
+		class="px-2 py-8 flex flex-col items-center border-t-2 text-light-background bg-light-contrast border-light-contrast dark:bg-dark-secondary-background dark:border-dark-contrast dark:text-dark-contrast"
+	>
 		<div class="flex flex-row flex-wrap gap-8 justify-center text-center md:text-lg">
 			<ul class="flex-1">
 				<li><h6 class="font-semibold uppercase">Pages</h6></li>
@@ -166,19 +174,19 @@
 	</footer>
 
 	<nav
-		class="sticky bottom-0 sm:hidden flex flex-row h-14 justify-around items-center text-xs px-2 bg-light-background text-light-contrast shadow-t-lg z-50"
+		class="sticky bottom-0 sm:hidden flex flex-row h-14 justify-around items-center text-xs px-2 shadow-t-lg z-50 border-t-2 border-light-contrast bg-light-background dark:bg-dark-secondary-background dark:border-dark-contrast"
 	>
 		{#each pages.filter((link) => link.required) as link}
 			<a
 				href={link.url}
-				class={`flex flex-col items-center decoration-light-accent transition-opacity ${
+				class={`flex flex-col items-center decoration-light-accent transition-opacity  ${
 					`/${$page.url.pathname.split('/')[1]}` == link.url
 						? 'opacity-100 underline'
 						: 'opacity-50'
 				}`}
 			>
-				<img src={link.icon} alt="" class="h-6" />
-				<span> {link.text} </span>
+				<img src={link.icon} alt="" class={`h-6 ${darkTheme && 'invert'}`} />
+				<span class="dark:text-dark-contrast"> {link.text} </span>
 			</a>
 		{/each}
 	</nav>

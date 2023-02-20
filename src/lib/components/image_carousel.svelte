@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Button from './button.svelte';
+
 	export let carouselItems: string[];
 
 	let index = 0;
@@ -15,7 +17,7 @@
 <div style={`--index: ${index}`} class="inline-flex w-full overflow-hidden mt-2 gap-5">
 	{#each carouselItems as image}
 		<div
-			class="flex shrink-0 flex-col border-2 w-full sm:w-96 border-light-contrast rounded-md carousel transition-transform overflow-hidden"
+			class="flex shrink-0 flex-col border-2 w-full sm:w-96 rounded-md carousel transition-transform overflow-hidden border-light-contrast dark:border-dark-contrast"
 		>
 			<img class="w-full object-cover" src={image} alt="" />
 		</div>
@@ -24,14 +26,8 @@
 
 {#if carouselItems.length > 1}
 	<div class="flex justify-between mt-2">
-		<button
-			class="p-2 border-2 border-light-contrast mt-2 w-24 rounded-md transition-colors bg-white hover:bg-light-secondary-background"
-			on:click={previousImage}>Previous</button
-		>
-		<button
-			class="p-2 border-2 border-light-contrast mt-2 w-24 rounded-md transition-colors bg-white hover:bg-light-secondary-background"
-			on:click={nextImage}>Next</button
-		>
+		<Button on:click={previousImage} width={96}>Previous</Button>
+		<Button on:click={nextImage} width={96}>Next</Button>
 	</div>
 {/if}
 
