@@ -56,7 +56,7 @@
 		<section>
 			<img
 				src={header_image}
-				class="border-2 rounded-md border-light-contrast dark:border-dark-contrast"
+				class="border-2 rounded-md border-light-border dark:border-dark-border"
 				alt="Minibusses lined up in a row"
 			/>
 

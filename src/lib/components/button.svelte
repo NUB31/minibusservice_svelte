@@ -14,7 +14,7 @@
 		disabled
 			? 'opacity-50'
 			: 'hover:bg-light-accent dark:hover:bg-dark-accent dark:hover:text-dark-background dark:hover:border-dark-background'
-	} p-2 border-2 border-light-contrast mt-2 rounded-md transition-colors bg-light-secondary-background dark:bg-dark-secondary-background dark:text-dark-contrast dark:border-dark-contrast`}
+	} p-2 border-2 border-light-border mt-2 rounded-md transition-colors bg-light-secondary-background dark:bg-dark-secondary-background dark:text-dark-contrast dark:border-dark-border`}
 >
 	<slot />
 </button>

@@ -11,17 +11,13 @@
 	import closeIcon from '$lib/assets/icons/close_icon.svg';
 
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import ThemeToggle from '$lib/components/theme_toggle.svelte';
+	import { darkTheme } from '$lib/stores/theme';
 
-	let menuOpen = false;
+	let menuOpen = true;
 	function toggleMenuOpen() {
 		menuOpen = !menuOpen;
 	}
-
-	let darkTheme = true;
-	onMount(() => {
-		darkTheme = document.documentElement.classList.contains('dark');
-	});
 
 	let pages = [
 		{
@@ -71,10 +67,10 @@
 
 <div class="flex flex-col min-h-screen text-light-contrast dark:text-dark-contrast">
 	<header
-		class="sticky top-0 z-50 shadow-lg h-16 flex justify-center border-b-2 bg-light-secondary-background border-light-contrast dark:bg-dark-secondary-background dark:border-dark-contrast"
+		class="sticky top-0 z-50 shadow-lg h-16 flex justify-center border-b-2 bg-light-secondary-background border-light-border dark:bg-dark-secondary-background dark:border-dark-border"
 	>
 		<div class="max-w-7xl w-full flex flex-row p-4">
-			<img src={darkTheme ? logoFullDark : logoFull} alt="Minibusservice Logo" />
+			<img src={$darkTheme ? logoFullDark : logoFull} alt="Minibusservice Logo" />
 			<div class="flex justify-end items-center grow">
 				<ul
 					class="hidden lg:flex flex-row grow gap-10 uppercase font-medium md:text-lg justify-end"
@@ -94,18 +90,18 @@
 					<img
 						src={menuOpen ? closeIcon : menuIcon}
 						alt={menuOpen ? 'Close side menu' : 'Open side menu'}
-						class={`w-8 ${darkTheme && 'invert'}`}
+						class="w-8 dark:invert"
 					/>
 				</button>
 			</div>
 		</div>
 	</header>
 	<nav
-		class={`w-56 lg:w-96 h-full transition-transform fixed top-16 right-0 bottom-14 sm:bottom-0 z-40 shadow-lg px-4 py-8 border-l-2 border-light-contrast bg-light-secondary-background dark:bg-dark-secondary-background dark:border-dark-contrast ${
+		class={`flex flex-col w-56 lg:w-96 transition-transform fixed top-16 bottom-14 sm:bottom-0 right-0 z-40 shadow-lg px-4 py-8 border-l-2 border-light-border bg-light-secondary-background dark:bg-dark-secondary-background dark:border-dark-border ${
 			menuOpen ? 'translate-x-0' : 'translate-x-56 lg:translate-x-96'
 		}`}
 	>
-		<ul class="text-lg lg:text-xl font-medium flex flex-col gap-2">
+		<ul class="text-lg lg:text-xl font-medium flex flex-col gap-2 grow">
 			{#each pages as link}
 				<li>
 					<a
@@ -117,6 +113,9 @@
 				</li>
 			{/each}
 		</ul>
+		<div class="flex items-center gap-1">
+			<ThemeToggle />
+		</div>
 	</nav>
 
 	<!-- Main Content -->
@@ -127,7 +126,7 @@
 	</main>
 
 	<footer
-		class="px-2 py-8 flex flex-col items-center border-t-2 text-light-background bg-light-contrast border-light-contrast dark:bg-dark-secondary-background dark:border-dark-contrast dark:text-dark-contrast"
+		class="px-2 py-8 flex flex-col items-center border-t-2 text-light-background bg-light-contrast border-light-border dark:bg-dark-secondary-background dark:border-dark-border dark:text-dark-contrast"
 	>
 		<div class="flex flex-row flex-wrap gap-8 justify-center text-center md:text-lg">
 			<ul class="flex-1">
@@ -174,7 +173,7 @@
 	</footer>
 
 	<nav
-		class="sticky bottom-0 sm:hidden flex flex-row h-14 justify-around items-center text-xs px-2 shadow-t-lg z-50 border-t-2 border-light-contrast bg-light-background dark:bg-dark-secondary-background dark:border-dark-contrast"
+		class="sticky bottom-0 sm:hidden flex flex-row h-14 justify-around items-center text-xs px-2 shadow-t-lg z-50 border-t-2 border-light-border bg-light-background dark:bg-dark-secondary-background dark:border-dark-border"
 	>
 		{#each pages.filter((link) => link.required) as link}
 			<a
@@ -185,7 +184,7 @@
 						: 'opacity-50'
 				}`}
 			>
-				<img src={link.icon} alt="" class={`h-6 ${darkTheme && 'invert'}`} />
+				<img src={link.icon} alt="" class="h-6 dark:invert" />
 				<span class="dark:text-dark-contrast"> {link.text} </span>
 			</a>
 		{/each}

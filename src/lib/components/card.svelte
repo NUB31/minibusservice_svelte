@@ -5,11 +5,11 @@
 </script>
 
 <div
-	class="flex shrink-0 flex-col border-2 w-full rounded-md transition-transform overflow-hidden border-light-contrast dark:border-dark-contrast"
+	class="flex shrink-0 flex-col border-2 w-full rounded-md transition-transform overflow-hidden border-light-border bg-light-secondary-background dark:border-dark-border dark:bg-dark-secondary-background"
 >
 	{#if card.image}
 		<img
-			class="w-full max-h-44 object-cover border-b-2 border-light-contrast dark:border-dark-contrast"
+			class="w-full max-h-44 object-cover border-b-2 border-light-border dark:border-dark-border"
 			src={card.image}
 			alt=""
 		/>

@@ -7,11 +7,13 @@ module.exports = {
 			colors: {
 				'light-background': '#F6F6F6',
 				'light-secondary-background': '#F9F9F9',
+				'light-border': '#181818',
 				'light-contrast': '#181818',
+				'light-accent': '#FF1D25',
 				'dark-background': '#181818',
 				'dark-secondary-background': '#202020',
+				'dark-border': '#333333',
 				'dark-contrast': '#F6F6F6',
-				'light-accent': '#FF1D25',
 				'dark-accent': '#FF1D25'
 			},
 			boxShadow: {

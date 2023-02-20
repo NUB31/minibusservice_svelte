@@ -17,7 +17,7 @@
 <div style={`--index: ${index}`} class="inline-flex w-full overflow-hidden mt-2 gap-5">
 	{#each carouselItems as image}
 		<div
-			class="flex shrink-0 flex-col border-2 w-full sm:w-96 rounded-md carousel transition-transform overflow-hidden border-light-contrast dark:border-dark-contrast"
+			class="flex shrink-0 flex-col border-2 w-full sm:w-96 rounded-md carousel transition-transform overflow-hidden border-light-border dark:border-dark-border"
 		>
 			<img class="w-full object-cover" src={image} alt="" />
 		</div>
