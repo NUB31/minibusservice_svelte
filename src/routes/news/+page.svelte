@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Card from '$lib/components/card.svelte';
+	import PageSelector from '$lib/components/page_selector.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -22,3 +23,5 @@
 		{/each}
 	</div>
 </section>
+
+<PageSelector maxItems={data.newsCount} />

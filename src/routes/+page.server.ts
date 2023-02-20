@@ -13,6 +13,7 @@ export async function load() {
 			where: {
 				active: true
 			},
+			take: 7,
 			orderBy: { created_at: 'desc' }
 		});
 	} catch (err) {

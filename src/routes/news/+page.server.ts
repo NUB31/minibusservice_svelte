@@ -5,14 +5,27 @@ const prisma = new PrismaClient();
 
 /** @type {import('./$types').PageLoad} */
 
-export async function load() {
+export async function load({ url }: any) {
+	let page: number | null = 1;
 	let news: News[] | null = null;
+	let count: number | null = null;
 
 	try {
+		let pageParam = url.searchParams.get('page');
+		if (pageParam) {
+			let pageParamAsNumber = Number(pageParam);
+			if (!isNaN(pageParamAsNumber)) {
+				page = pageParamAsNumber;
+			}
+		}
+
+		count = await prisma.news.count();
 		news = await prisma.news.findMany({
 			where: {
 				active: true
 			},
+			skip: 10 * (page - 1),
+			take: 10,
 			orderBy: { created_at: 'desc' }
 		});
 	} catch (err) {
@@ -28,6 +41,7 @@ export async function load() {
 	}
 
 	return {
-		news
+		news,
+		newsCount: count
 	};
 }
