@@ -84,21 +84,23 @@
 		</section>
 	</div>
 
-	<section class="w-60 shrink-0 hidden lg:block">
-		<div class="sticky top-24">
-			<h2 class="text-lg md:text-xl font-semibold text-center">Nytt fra oss</h2>
-			<div class="max-h-[calc(100vh-140px)] flex flex-col gap-4 overflow-y-scroll mt-4">
-				{#each data.news as item}
-					<Card
-						card={{
-							header: item.title,
-							image: item.image,
-							text: item.short_text,
-							url: `/news/${item.slug}`
-						}}
-					/>
-				{/each}
+	{#if data.news.length != 0}
+		<section class="w-60 shrink-0 hidden lg:block">
+			<div class="sticky top-24">
+				<h2 class="text-lg md:text-xl font-semibold text-center">Nytt fra oss</h2>
+				<div class="max-h-[calc(100vh-140px)] flex flex-col gap-4 overflow-y-scroll mt-4">
+					{#each data.news as item}
+						<Card
+							card={{
+								header: item.title,
+								image: item.image,
+								text: item.short_text,
+								url: `/news/${item.slug}`
+							}}
+						/>
+					{/each}
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	{/if}
 </div>

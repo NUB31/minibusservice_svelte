@@ -14,7 +14,7 @@
 	import ThemeToggle from '$lib/components/theme_toggle.svelte';
 	import { darkTheme } from '$lib/stores/theme';
 
-	let menuOpen = true;
+	let menuOpen = false;
 	function toggleMenuOpen() {
 		menuOpen = !menuOpen;
 	}

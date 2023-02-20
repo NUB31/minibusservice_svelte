@@ -23,12 +23,6 @@ export async function load() {
 		});
 	}
 
-	if (!news) {
-		throw error(404, {
-			message: 'Not fond'
-		});
-	}
-
 	return {
 		news
 	};

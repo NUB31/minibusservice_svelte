@@ -49,11 +49,11 @@ model Message {
 model News {
   id         String  @id @default(uuid())
   title      String
-  short_text String
+  short_text String  @db.VarChar(2048)
   image      String?
   slug       String  @unique
   active     Boolean @default(true)
-  html       String
+  html       String  @db.VarChar(4096)
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
