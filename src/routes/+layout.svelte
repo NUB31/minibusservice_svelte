@@ -69,31 +69,29 @@
 	<header
 		class="sticky top-0 z-50 shadow-lg h-16 flex justify-center border-b-2 bg-light-secondary-background border-light-border dark:bg-dark-secondary-background dark:border-dark-border"
 	>
-		<div class="max-w-7xl w-full flex flex-row p-4">
-			<img src={$darkTheme ? logoFullDark : logoFull} alt="Minibusservice Logo" />
-			<div class="flex justify-end items-center grow">
-				<ul
-					class="hidden lg:flex flex-row grow gap-10 uppercase font-medium md:text-lg justify-end"
-				>
-					{#each pages.filter((page) => page.required) as link}
-						<li>
-							<a
-								class={`${
-									`/${$page.url.pathname.split('/')[1]}` == link.url && 'border-b-2'
-								} border-b-0 transition-colors border-light-accent dark:border-dark-accent hover:text-light-accent dark:hover:text-dark-accent`}
-								href={link.url}>{link.text}</a
-							>
-						</li>
-					{/each}
-				</ul>
-				<button class="ml-20" on:click={toggleMenuOpen}>
-					<img
-						src={menuOpen ? closeIcon : menuIcon}
-						alt={menuOpen ? 'Close side menu' : 'Open side menu'}
-						class="w-8 dark:invert"
-					/>
-				</button>
-			</div>
+		<div class="max-w-7xl w-full flex flex-row p-4 justify-between">
+			<a class="grow" href="/">
+				<img class="h-full" src={$darkTheme ? logoFullDark : logoFull} alt="Minibusservice Logo" />
+			</a>
+			<ul class="hidden lg:flex flex-row gap-10 uppercase font-medium md:text-lg justify-end">
+				{#each pages.filter((page) => page.required) as link}
+					<li>
+						<a
+							class={`${
+								`/${$page.url.pathname.split('/')[1]}` == link.url && 'border-b-2'
+							} border-b-0 transition-colors border-light-accent dark:border-dark-accent hover:text-light-accent dark:hover:text-dark-accent`}
+							href={link.url}>{link.text}</a
+						>
+					</li>
+				{/each}
+			</ul>
+			<button class="ml-20" on:click={toggleMenuOpen}>
+				<img
+					src={menuOpen ? closeIcon : menuIcon}
+					alt={menuOpen ? 'Close side menu' : 'Open side menu'}
+					class="w-8 dark:invert"
+				/>
+			</button>
 		</div>
 	</header>
 	<nav
