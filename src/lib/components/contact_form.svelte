@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Modal from '$lib/components/modal.svelte';
 	import Button from '$lib/components/button.svelte';
+	import { language } from '$lib/stores/language';
 
 	let modalOpen = false;
 	let buttonDisabled = false;
@@ -73,22 +74,38 @@
 <div class="md:text-lg flex flex-col md:flex-row mt-2 gap-8">
 	<div class="flex-1 flex flex-col">
 		<p class="opacity-70 font-medium pt-2 block md:hidden">
-			Spørsmål?<br />Kontakt oss via tlf, e-post eller via skjemaet under
+			{#if $language == 'en'}
+				Questions?<br />Contact us via phone, email or fill inn the form below
+			{:else}
+				Spørsmål?<br />Kontakt oss via tlf, e-post eller via skjemaet under
+			{/if}
 		</p>
 		<p class="opacity-70 font-medium pt-2 hidden md:block">
-			Spørsmål?<br />Kontakt oss via tlf, e-post eller via skjemaet til høgre
+			{#if $language == 'en'}
+				Questions?<br />Contact us via phone, email or use the form to the right
+			{:else}
+				Spørsmål?<br />Kontakt oss via tlf, e-post eller via skjemaet til høgre
+			{/if}
 		</p>
 		<a
 			class="text-light-accent dark:text-dark-accent hover:underline font-bold block"
 			href="tel:45256161"
 		>
-			Tlf: +47 45 25 61 61
+			{#if $language == 'en'}
+				Phone: +47 45 25 61 61
+			{:else}
+				Tlf: +47 45 25 61 61
+			{/if}
 		</a>
 		<a
 			class="text-light-accent dark:text-dark-accent hover:underline font-bold block"
 			href="mailto:minibusstur@hotmail.com"
 		>
-			E-post: minibusstur@hotmail.com
+			{#if $language == 'en'}
+				Email: minibusstur@hotmail.com
+			{:else}
+				E-post: minibusstur@hotmail.com
+			{/if}
 		</a>
 
 		<iframe
@@ -122,38 +139,62 @@
 			</div>
 		{/if}
 		<div class="mt-3">
-			<div class="font-semibold">Fullt navn:</div>
+			<div class="font-semibold">
+				{#if $language == 'en'}
+					Full name:
+				{:else}
+					Fullt navn:
+				{/if}
+			</div>
 			<input
 				bind:value={name}
-				placeholder="Navn"
+				placeholder={`${$language == 'en' ? 'Name' : 'Navn'}`}
 				class="mt-1 p-2 border-2 rounded-md w-full bg-light-secondary-background border-light-border dark:border-dark-border dark:bg-dark-secondary-background"
 				type="text"
 			/>
 		</div>
 		<div class="mt-3 ">
-			<div class="font-semibold">E-post:</div>
+			<div class="font-semibold">
+				{#if $language == 'en'}
+					Email:
+				{:else}
+					E-post:
+				{/if}
+			</div>
 			<input
 				bind:value={email}
-				placeholder="E-postadresse"
+				placeholder={`${$language == 'en' ? 'Email address' : 'E-postadresse'}`}
 				class="mt-1 p-2 border-2 rounded-md w-full bg-light-secondary-background border-light-border dark:border-dark-border dark:bg-dark-secondary-background"
 				type="text"
 			/>
 		</div>
 		<div class="mt-3">
-			<div class="font-semibold">Telefonnummer:</div>
+			<div class="font-semibold">
+				{#if $language == 'en'}
+					Phone number:
+				{:else}
+					Telefonnummer:
+				{/if}
+			</div>
 			<input
 				bind:value={phone}
-				placeholder="Telefonnummer"
+				placeholder={`${$language == 'en' ? 'Phone number' : 'Telefonnummer'}`}
 				class="mt-1 p-2 border-2 rounded-md w-full bg-light-secondary-background border-light-border dark:border-dark-border dark:bg-dark-secondary-background"
 				type="text"
 			/>
 		</div>
 		<div class="mt-3">
-			<div class="font-semibold">Melding:</div>
+			<div class="font-semibold">
+				{#if $language == 'en'}
+					Message:
+				{:else}
+					Melding:
+				{/if}
+			</div>
 			<textarea
 				bind:value={message}
 				class="border-2 mt-1 p-2 rounded-md h-60 bg-light-secondary-background w-full border-light-border dark:border-dark-border dark:bg-dark-secondary-background"
-				placeholder="Melding"
+				placeholder={`${$language == 'en' ? 'Message' : 'Melding'}`}
 			/>
 		</div>
 		<div class="mt-3">

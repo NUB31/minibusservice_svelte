@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { language } from '$lib/stores/language';
 	import Button from './button.svelte';
 
 	export let carouselItems: string[];
@@ -26,8 +27,20 @@
 
 {#if carouselItems.length > 1}
 	<div class="flex justify-between mt-2">
-		<Button on:click={previousImage} width={96}>Previous</Button>
-		<Button on:click={nextImage} width={96}>Next</Button>
+		<Button on:click={previousImage} width={96}>
+			{#if $language == 'en'}
+				Previous
+			{:else}
+				Forrige
+			{/if}
+		</Button>
+		<Button on:click={nextImage} width={96}>
+			{#if $language == 'en'}
+				Next
+			{:else}
+				Neste
+			{/if}
+		</Button>
 	</div>
 {/if}
 

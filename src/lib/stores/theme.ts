@@ -19,11 +19,11 @@ function createThemeToggler() {
 		}
 	}
 
-	const { subscribe, set, update } = writable(defaultValue);
+	const { subscribe, update } = writable(defaultValue);
 
 	return {
 		subscribe,
-		setDarkMode: (value: boolean) => {
+		set: (value: boolean) => {
 			update(() => value);
 			if (browser) {
 				if (value) {

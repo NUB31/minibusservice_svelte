@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { language } from '$lib/stores/language';
 	import type { CardCarouselItem } from '$lib/types/CardCarouselItem';
 
 	export let card: CardCarouselItem;
@@ -23,7 +24,13 @@
 		</p>
 		<a
 			class="font-semibold hi mt-2 transition-colors hover:text-light-accent dark:hover:text-dark-accent w-fit"
-			href={card.url}>Les mer...</a
+			href={card.url}
 		>
+			{#if $language == 'en'}
+				Read more...
+			{:else}
+				Les mer...
+			{/if}
+		</a>
 	</div>
 </div>

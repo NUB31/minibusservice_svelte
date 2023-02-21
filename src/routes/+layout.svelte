@@ -13,52 +13,69 @@
 	import { page } from '$app/stores';
 	import ThemeToggle from '$lib/components/theme_toggle.svelte';
 	import { darkTheme } from '$lib/stores/theme';
+	import LanguageToggle from '$lib/components/language_toggle.svelte';
+	import { language } from '$lib/stores/language';
 
 	let menuOpen = false;
 	function toggleMenuOpen() {
 		menuOpen = !menuOpen;
 	}
 
-	let pages = [
+	let pages: (
+		| {
+				url: string;
+				text: string;
+				required: boolean;
+				icon: string;
+		  }
+		| {
+				url: string;
+				text: string;
+				required: boolean;
+				icon: null;
+		  }
+	)[] = [];
+
+	$: pages = [
 		{
 			url: '/',
-			text: 'Hjem',
+			text: `${$language == 'en' ? 'Home' : 'Hjem'}`,
 			required: true,
 			icon: homeIcon
 		},
 		{
 			url: '/news',
-			text: 'Nyheter',
+			text: `${$language == 'en' ? 'News' : 'Nyheter'}`,
 			required: true,
 			icon: newsIcon
 		},
 		{
 			url: '/tickets',
-			text: 'Biletter',
+			text: `${$language == 'en' ? 'Tickets' : 'Biletter'}`,
 			required: true,
 			icon: ticketIcon
 		},
 		{
 			url: '/bus',
-			text: 'Buss',
+			text: `${$language == 'en' ? 'Bus' : 'Buss'}`,
 			required: true,
 			icon: busIcon
 		},
 		{
 			url: '/taxi',
-			text: 'Taxi',
+			text: `${$language == 'en' ? 'Taxi' : 'Taxi'}`,
 			required: false,
 			icon: null
 		},
 		{
 			url: '/wheelchair',
-			text: 'Rullestol',
+			text: `${$language == 'en' ? 'Wheelchair' : 'Rullestol'}`,
 			required: false,
 			icon: null
 		},
 		{
 			url: '/contact',
-			text: 'Ta kontakt',
+			text: `${$language == 'en' ? 'Contact us' : 'Ta kontakt'}`,
 			required: true,
 			icon: contactIcon
 		}
@@ -111,8 +128,9 @@
 				</li>
 			{/each}
 		</ul>
-		<div class="flex items-center gap-1">
+		<div class="flex flex-col items-center gap-3 w-fit">
 			<ThemeToggle />
+			<LanguageToggle />
 		</div>
 	</nav>
 
@@ -128,39 +146,167 @@
 	>
 		<div class="flex flex-row flex-wrap gap-8 justify-center text-center md:text-lg">
 			<ul class="flex-1">
-				<li><h6 class="font-semibold uppercase">Sider</h6></li>
+				<li>
+					<h6 class="font-semibold uppercase">
+						{#if $language == 'en'}
+							Pages
+						{:else}
+							Sider
+						{/if}
+					</h6>
+				</li>
 				{#each pages as link}
 					<li><a href={link.url}>{link.text}</a></li>
 				{/each}
 			</ul>
 			<ul class="flex-1">
-				<li><h6 class="font-semibold uppercase">Hjelp</h6></li>
-				<li><a href="/contact">Kontakt oss</a></li>
-				<li><a href="/privacy">Privacy Policy</a></li>
-				<li><a href="/sale-conditions">Conditions Of Sale</a></li>
-				<li><a href="/settings">Instillinger</a></li>
+				<li>
+					<h6 class="font-semibold uppercase">
+						{#if $language == 'en'}
+							Help
+						{:else}
+							Hjelp
+						{/if}
+					</h6>
+				</li>
+				<li>
+					<a href="/contact">
+						{#if $language == 'en'}
+							Contact us
+						{:else}
+							Kontakt oss
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a href="/privacy">
+						{#if $language == 'en'}
+							Privacy Policy
+						{:else}
+							Personvernerklæring
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a href="/sale-conditions">
+						{#if $language == 'en'}
+							Conditions Of Sale
+						{:else}
+							Salgsbetingelser
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a href="/settings">
+						{#if $language == 'en'}
+							Settings
+						{:else}
+							Instillinger
+						{/if}
+					</a>
+				</li>
 			</ul>
 			<ul class="flex-1">
-				<li><h6 class="font-semibold uppercase">Minibusservice</h6></li>
-				<li><a href="/about">Om oss</a></li>
 				<li>
-					<a target="_blank" rel="noreferrer" href="https://www.facebook.com/MinibusserviceSteneAS/"
-						>Facebook</a
-					>
+					<h6 class="font-semibold uppercase">
+						{#if $language == 'en'}
+							Minibusservice
+						{:else}
+							Minibusservice
+						{/if}
+					</h6>
 				</li>
-				<li><a href="mailto:minibusstur@hotmail.com">E-post</a></li>
-				<li><a href="tel:45256161">Telefon</a></li>
+				<li>
+					<a href="/about">
+						{#if $language == 'en'}
+							About
+						{:else}
+							Om oss
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href="https://www.facebook.com/MinibusserviceSteneAS/"
+					>
+						{#if $language == 'en'}
+							Facebook
+						{:else}
+							Facebook
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a href="mailto:minibusstur@hotmail.com">
+						{#if $language == 'en'}
+							Email
+						{:else}
+							E-post
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a href="tel:45256161">
+						{#if $language == 'en'}
+							Phone
+						{:else}
+							Telefon
+						{/if}
+					</a>
+				</li>
 			</ul>
 			<ul class="flex-1">
-				<li><h6 class="font-semibold uppercase">Ta kontakt</h6></li>
-				<li><a href="/contact">Kontaktside</a></li>
 				<li>
-					<a target="_blank" rel="noreferrer" href="https://www.facebook.com/MinibusserviceSteneAS/"
-						>Facebook</a
-					>
+					<h6 class="font-semibold uppercase">
+						{#if $language == 'en'}
+							Contact us
+						{:else}
+							Ta kontakt
+						{/if}
+					</h6>
 				</li>
-				<li><a href="mailto:minibusstur@hotmail.com">E-post</a></li>
-				<li><a href="tel:45256161">Telefon</a></li>
+				<li>
+					<a href="/contact">
+						{#if $language == 'en'}
+							Contact page
+						{:else}
+							Kontaktside
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href="https://www.facebook.com/MinibusserviceSteneAS/"
+					>
+						{#if $language == 'en'}
+							Facebook
+						{:else}
+							Facebook
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a href="mailto:minibusstur@hotmail.com">
+						{#if $language == 'en'}
+							Email
+						{:else}
+							E-post
+						{/if}
+					</a>
+				</li>
+				<li>
+					<a href="tel:45256161">
+						{#if $language == 'en'}
+							Phone
+						{:else}
+							Telefon
+						{/if}
+					</a>
+				</li>
 			</ul>
 		</div>
 		<div class="mt-8 text-center font-semibold">Org nr: 816 230 942</div>

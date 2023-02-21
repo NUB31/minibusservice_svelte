@@ -2,6 +2,7 @@
 	import type { CardCarouselItem } from '$lib/types/CardCarouselItem';
 	import Card from '$lib/components/card.svelte';
 	import Button from '$lib/components/button.svelte';
+	import { language } from '$lib/stores/language';
 
 	export let carouselItems: CardCarouselItem[];
 
@@ -25,8 +26,20 @@
 </div>
 
 <div class="flex justify-between mt-2 md:text-lg">
-	<Button on:click={previousCard} width={96}>Forrige</Button>
-	<Button on:click={nextCard} width={96}>Neste</Button>
+	<Button on:click={previousCard} width={96}>
+		{#if $language == 'en'}
+			Previous
+		{:else}
+			Forrige
+		{/if}
+	</Button>
+	<Button on:click={nextCard} width={96}>
+		{#if $language == 'en'}
+			Next
+		{:else}
+			Neste
+		{/if}
+	</Button>
 </div>
 
 <style>

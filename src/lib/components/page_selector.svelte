@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Button from '$lib/components/button.svelte';
+	import { language } from '$lib/stores/language';
 
 	export let maxItems: number;
 
@@ -23,7 +24,13 @@
 				}, 10)}
 			href={`?page=${currentPage - 1}`}
 		>
-			<Button width={120}>Previous</Button>
+			<Button width={120}>
+				{#if $language == 'en'}
+					Previous
+				{:else}
+					Forrige
+				{/if}
+			</Button>
 		</a>
 	{/if}
 	{#if (currentPage + 1) * 10 - 10 < maxItems}
@@ -34,7 +41,13 @@
 				}, 10)}
 			href={`?page=${currentPage + 1}`}
 		>
-			<Button width={120}>Next</Button>
+			<Button width={120}>
+				{#if $language == 'en'}
+					Next
+				{:else}
+					Neste
+				{/if}
+			</Button>
 		</a>
 	{/if}
 </section>
