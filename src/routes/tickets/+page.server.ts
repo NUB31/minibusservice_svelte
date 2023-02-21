@@ -19,28 +19,6 @@ export async function load({ url }: any) {
 			}
 		}
 
-		// await prisma.ticket_Group.create({
-		// 	data: {
-		// 		name: 'owo',
-		// 		Tickets: {
-		// 			create: [
-		// 				{
-		// 					name: 'p',
-		// 					price_in_cents: 3456
-		// 				},
-		// 				{
-		// 					name: 'a',
-		// 					price_in_cents: 789
-		// 				},
-		// 				{
-		// 					name: 'n',
-		// 					price_in_cents: 234
-		// 				}
-		// 			]
-		// 		}
-		// 	}
-		// });
-
 		count = await prisma.ticket_Group.count();
 		ticketGroups = await prisma.ticket_Group.findMany({
 			where: {

@@ -7,7 +7,7 @@
 </script>
 
 <section>
-	<h1 class="font-semibold text-xl md:text-2xl">News from us</h1>
+	<h1 class="font-semibold text-xl md:text-2xl">Nytt fra oss</h1>
 	<div class="mt-4 flex flex-wrap gap-5">
 		{#each data.news as item}
 			<div class="grow">

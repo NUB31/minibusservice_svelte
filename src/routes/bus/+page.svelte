@@ -22,11 +22,11 @@
 	let tourBusCarouselItems: string[] = [twoTourBuses, tourBusSide, tourBusSideLogo];
 </script>
 
-<h1 class="font-semibold text-xl md:text-2xl">Busses</h1>
+<h1 class="font-semibold text-xl md:text-2xl">Buss</h1>
 
 <section id="minibus" class="mt-4 md:flex justify-between gap-5">
 	<div>
-		<h2 class="font-semibold grow text-lg md:text-xl">Minibusses</h2>
+		<h2 class="font-semibold grow text-lg md:text-xl">Minibusser</h2>
 		<p class="md:text-lg">
 			Vi har idag fire minibusser, to Mercedes Sprinter og to Ford Transitt. Vi har også en
 			fullelektrisk Mercedes EQV og en Mitsubishi Outlander.<br />Vi finner løsninger for grupper
@@ -40,7 +40,7 @@
 
 <section id="tour" class="mt-12 md:flex justify-between gap-5">
 	<div>
-		<h2 class="font-semibold grow text-lg md:text-xl">Tour busses</h2>
+		<h2 class="font-semibold grow text-lg md:text-xl">Turbusser</h2>
 		<p class="md:text-lg">
 			Vi er medeiger i Storfjord Turbuss AS som har tre turbusser.<br />Storfjord Turbuss AS ble
 			etablert i 2018, og vi utfører turkjøring og lager pakkeløsninger etter dine ønsker og behov.<br

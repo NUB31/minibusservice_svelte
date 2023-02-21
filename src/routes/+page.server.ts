@@ -18,10 +18,6 @@ export async function load() {
 		});
 	} catch (err) {
 		console.error(err);
-
-		throw error(503, {
-			message: 'Service Unavailable'
-		});
 	}
 
 	return {

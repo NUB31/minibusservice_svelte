@@ -73,22 +73,22 @@
 <div class="md:text-lg flex flex-col md:flex-row mt-2 gap-8">
 	<div class="flex-1 flex flex-col">
 		<p class="opacity-70 font-medium pt-2 block md:hidden">
-			Questions?<br />Contact us by phone, email or by using the form below
+			Spørsmål?<br />Kontakt oss via tlf, e-post eller via skjemaet under
 		</p>
 		<p class="opacity-70 font-medium pt-2 hidden md:block">
-			Questions?<br />Contact us by phone, email or by using the form to the right
+			Spørsmål?<br />Kontakt oss via tlf, e-post eller via skjemaet til høgre
 		</p>
 		<a
 			class="text-light-accent dark:text-dark-accent hover:underline font-bold block"
 			href="tel:45256161"
 		>
-			Phone: +47 45 25 61 61
+			Tlf: +47 45 25 61 61
 		</a>
 		<a
 			class="text-light-accent dark:text-dark-accent hover:underline font-bold block"
 			href="mailto:minibusstur@hotmail.com"
 		>
-			Email: minibusstur@hotmail.com
+			E-post: minibusstur@hotmail.com
 		</a>
 
 		<iframe
@@ -122,38 +122,38 @@
 			</div>
 		{/if}
 		<div class="mt-3">
-			<div class="font-semibold">Name:</div>
+			<div class="font-semibold">Fullt navn:</div>
 			<input
 				bind:value={name}
-				placeholder="Name"
+				placeholder="Navn"
 				class="mt-1 p-2 border-2 rounded-md w-full bg-light-secondary-background border-light-border dark:border-dark-border dark:bg-dark-secondary-background"
 				type="text"
 			/>
 		</div>
 		<div class="mt-3 ">
-			<div class="font-semibold">Email:</div>
+			<div class="font-semibold">E-post:</div>
 			<input
 				bind:value={email}
-				placeholder="Email"
+				placeholder="E-postadresse"
 				class="mt-1 p-2 border-2 rounded-md w-full bg-light-secondary-background border-light-border dark:border-dark-border dark:bg-dark-secondary-background"
 				type="text"
 			/>
 		</div>
 		<div class="mt-3">
-			<div class="font-semibold">Phone number:</div>
+			<div class="font-semibold">Telefonnummer:</div>
 			<input
 				bind:value={phone}
-				placeholder="Phone number"
+				placeholder="Telefonnummer"
 				class="mt-1 p-2 border-2 rounded-md w-full bg-light-secondary-background border-light-border dark:border-dark-border dark:bg-dark-secondary-background"
 				type="text"
 			/>
 		</div>
 		<div class="mt-3">
-			<div class="font-semibold">Message:</div>
+			<div class="font-semibold">Melding:</div>
 			<textarea
 				bind:value={message}
 				class="border-2 mt-1 p-2 rounded-md h-60 bg-light-secondary-background w-full border-light-border dark:border-dark-border dark:bg-dark-secondary-background"
-				placeholder="Message"
+				placeholder="Melding"
 			/>
 		</div>
 		<div class="mt-3">

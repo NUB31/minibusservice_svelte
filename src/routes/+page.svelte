@@ -74,17 +74,17 @@
 		</section>
 
 		<section class="mt-12">
-			<h1 class="font-semibold text-xl md:text-2xl">Our services</h1>
+			<h1 class="font-semibold text-xl md:text-2xl">Våre tenester</h1>
 			<CardCarousel {carouselItems} />
 		</section>
 
 		<section class="mt-12">
-			<h1 class="font-semibold text-xl md:text-2xl">Contact us</h1>
+			<h1 class="font-semibold text-xl md:text-2xl">Kontakt oss</h1>
 			<ContactForm />
 		</section>
 	</div>
 
-	{#if data.news.length != 0}
+	{#if data.news && data.news.length != 0}
 		<section class="w-60 shrink-0 hidden lg:block">
 			<div
 				class="sticky top-24 rounded-md border-2 p-2 bg-light-secondary-background border-light-border dark:bg-dark-secondary-background dark:border-dark-border"

@@ -11,7 +11,7 @@
 </script>
 
 <section>
-	<h1 class="font-semibold text-xl md:text-2xl">News from us</h1>
+	<h1 class="font-semibold text-xl md:text-2xl">Billetter</h1>
 	<div class="mt-4 flex flex-wrap gap-5">
 		{#each data.ticketGroups as ticketGroup}
 			<div class="grow">

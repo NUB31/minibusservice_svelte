@@ -23,7 +23,7 @@
 		</p>
 		<a
 			class="font-semibold hi mt-2 transition-colors hover:text-light-accent dark:hover:text-dark-accent w-fit"
-			href={card.url}>Read more...</a
+			href={card.url}>Les mer...</a
 		>
 	</div>
 </div>

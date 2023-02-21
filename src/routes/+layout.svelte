@@ -22,25 +22,25 @@
 	let pages = [
 		{
 			url: '/',
-			text: 'Home',
+			text: 'Hjem',
 			required: true,
 			icon: homeIcon
 		},
 		{
 			url: '/news',
-			text: 'News',
+			text: 'Nyheter',
 			required: true,
 			icon: newsIcon
 		},
 		{
 			url: '/tickets',
-			text: 'Tickets',
+			text: 'Biletter',
 			required: true,
 			icon: ticketIcon
 		},
 		{
 			url: '/bus',
-			text: 'Bus',
+			text: 'Buss',
 			required: true,
 			icon: busIcon
 		},
@@ -52,13 +52,13 @@
 		},
 		{
 			url: '/wheelchair',
-			text: 'Wheelchair',
+			text: 'Rullestol',
 			required: false,
 			icon: null
 		},
 		{
 			url: '/contact',
-			text: 'Contact us',
+			text: 'Ta kontakt',
 			required: true,
 			icon: contactIcon
 		}
@@ -128,39 +128,39 @@
 	>
 		<div class="flex flex-row flex-wrap gap-8 justify-center text-center md:text-lg">
 			<ul class="flex-1">
-				<li><h6 class="font-semibold uppercase">Pages</h6></li>
+				<li><h6 class="font-semibold uppercase">Sider</h6></li>
 				{#each pages as link}
 					<li><a href={link.url}>{link.text}</a></li>
 				{/each}
 			</ul>
 			<ul class="flex-1">
-				<li><h6 class="font-semibold uppercase">Help</h6></li>
-				<li><a href="/contact">Contact us</a></li>
+				<li><h6 class="font-semibold uppercase">Hjelp</h6></li>
+				<li><a href="/contact">Kontakt oss</a></li>
 				<li><a href="/privacy">Privacy Policy</a></li>
 				<li><a href="/sale-conditions">Conditions Of Sale</a></li>
-				<li><a href="/settings">Settings</a></li>
+				<li><a href="/settings">Instillinger</a></li>
 			</ul>
 			<ul class="flex-1">
 				<li><h6 class="font-semibold uppercase">Minibusservice</h6></li>
-				<li><a href="/about">About Us</a></li>
+				<li><a href="/about">Om oss</a></li>
 				<li>
 					<a target="_blank" rel="noreferrer" href="https://www.facebook.com/MinibusserviceSteneAS/"
 						>Facebook</a
 					>
 				</li>
-				<li><a href="mailto:minibusstur@hotmail.com">Email</a></li>
-				<li><a href="tel:45256161">Phone</a></li>
+				<li><a href="mailto:minibusstur@hotmail.com">E-post</a></li>
+				<li><a href="tel:45256161">Telefon</a></li>
 			</ul>
 			<ul class="flex-1">
-				<li><h6 class="font-semibold uppercase">Contact us</h6></li>
-				<li><a href="/contact">Contact page</a></li>
+				<li><h6 class="font-semibold uppercase">Ta kontakt</h6></li>
+				<li><a href="/contact">Kontaktside</a></li>
 				<li>
 					<a target="_blank" rel="noreferrer" href="https://www.facebook.com/MinibusserviceSteneAS/"
 						>Facebook</a
 					>
 				</li>
-				<li><a href="mailto:minibusstur@hotmail.com">Email</a></li>
-				<li><a href="tel:45256161">Phone</a></li>
+				<li><a href="mailto:minibusstur@hotmail.com">E-post</a></li>
+				<li><a href="tel:45256161">Telefon</a></li>
 			</ul>
 		</div>
 		<div class="mt-8 text-center font-semibold">Org nr: 816 230 942</div>

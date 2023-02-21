@@ -25,8 +25,8 @@
 </div>
 
 <div class="flex justify-between mt-2 md:text-lg">
-	<Button on:click={previousCard} width={96}>Previous</Button>
-	<Button on:click={nextCard} width={96}>Next</Button>
+	<Button on:click={previousCard} width={96}>Forrige</Button>
+	<Button on:click={nextCard} width={96}>Neste</Button>
 </div>
 
 <style>
