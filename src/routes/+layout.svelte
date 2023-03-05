@@ -7,8 +7,6 @@
 	import contactIcon from '$lib/assets/icons/contact_icon.svg';
 	import ticketIcon from '$lib/assets/icons/ticket_icon.svg';
 	import busIcon from '$lib/assets/icons/bus_icon.svg';
-	import menuIcon from '$lib/assets/icons/hamburger_icon.svg';
-	import closeIcon from '$lib/assets/icons/close_icon.svg';
 
 	import { page } from '$app/stores';
 	import ThemeToggle from '$lib/components/theme_toggle.svelte';
@@ -17,10 +15,8 @@
 	import { language } from '$lib/stores/language';
 
 	let menuOpen = false;
-	function toggleMenuOpen() {
-		menuOpen = !menuOpen;
-	}
 
+	// Initialize pages variable
 	let pages: (
 		| {
 				url: string;
@@ -102,13 +98,23 @@
 					</li>
 				{/each}
 			</ul>
-			<button class="ml-20" on:click={toggleMenuOpen}>
-				<img
-					src={menuOpen ? closeIcon : menuIcon}
-					alt={menuOpen ? 'Close side menu' : 'Open side menu'}
-					class="w-8 dark:invert"
+			<div class="h-full aspect-square ml-10 flex justify-center items-center py-1">
+				<input
+					bind:checked={menuOpen}
+					type="checkbox"
+					class="toggler z-10 h-full aspect-square shrink-0 cursor-pointer opacity-0"
+					aria-label="Open and close sidebar menu"
 				/>
-			</button>
+				<div class="hamburger h-full shrink-0 aspect-square translate-y-1/2 -translate-x-full">
+					<div
+						class={`bg-light-contrast dark:bg-dark-contrast relative h-0.5 transition-all rounded-full after:rounded-full before:rounded-full before:bg-light-contrast after:bg-light-contrast before:dark:bg-dark-contrast after:dark:bg-dark-contrast before:absolute after:absolute before:-top-[10px] before:w-full after:w-full before:h-0.5 after:h-0.5 before:transition-all after:transition-all after:top-[10px] ${
+							menuOpen
+								? 'before:top-0 after:top-0  before:rotate-45 after:-rotate-45 bg-transparent'
+								: ''
+						}`}
+					/>
+				</div>
+			</div>
 		</div>
 	</header>
 	<nav
