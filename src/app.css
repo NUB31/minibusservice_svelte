@@ -1,4 +1,11 @@
 @tailwind base;
+
+@layer base {
+    pre {
+        @apply bg-cyan-900 text-gray-200 p-8 rounded-md;
+    }
+}
+
 @tailwind components;
 @tailwind utilities;
 

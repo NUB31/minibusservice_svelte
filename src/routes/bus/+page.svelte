@@ -23,7 +23,13 @@
 	let tourBusCarouselItems: string[] = [twoTourBuses, tourBusSide, tourBusSideLogo];
 </script>
 
-<h1 class="font-semibold text-xl md:text-2xl">Buss</h1>
+<h1 class="font-semibold text-xl md:text-2xl">
+	{#if $language == 'en'}
+		Bus
+	{:else}
+		Buss
+	{/if}
+</h1>
 
 <section id="minibus" class="mt-4 md:flex justify-between gap-5">
 	<div>

@@ -117,13 +117,7 @@
 		/>
 	</div>
 
-	<form
-		on:submit={(e) => {
-			e.preventDefault();
-			sendMessage();
-		}}
-		class="pt-4 md:pt-0 flex-1 text-xl"
-	>
+	<form on:submit|preventDefault={sendMessage} class="pt-4 md:pt-0 flex-1 text-xl">
 		{#if error}
 			<div
 				class="bg-red-600 text-lg px-4 py-3 rounded-md border-2 border-light-border text-light-background dark:border-dark-border"

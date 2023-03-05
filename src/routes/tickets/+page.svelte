@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { invalidateAll } from '$app/navigation';
 	import PageSelector from '$lib/components/page_selector.svelte';
+	import { language } from '$lib/stores/language';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -11,7 +12,13 @@
 </script>
 
 <section>
-	<h1 class="font-semibold text-xl md:text-2xl">Billetter</h1>
+	<h1 class="font-semibold text-xl md:text-2xl">
+		{#if $language == 'en'}
+			Tickets
+		{:else}
+			Billetter
+		{/if}
+	</h1>
 	<div class="mt-4 flex flex-wrap gap-5">
 		{#each data.ticketGroups as ticketGroup}
 			<div class="grow">
