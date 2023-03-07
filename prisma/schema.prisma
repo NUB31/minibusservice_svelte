@@ -8,7 +8,10 @@ datasource db {
 }
 
 model Ticket {
-  id                String  @id @default(uuid())
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
   name              String
   price_in_cents    Int
   active            Boolean @default(true)
@@ -16,51 +19,50 @@ model Ticket {
   sold_out_override Boolean @default(false)
 
   Ticket_Groups Ticket_Group[]
-
-  Orders Order[]
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  Orders        Order[]
 }
 
 model Ticket_Group {
-  id         String  @id @default(uuid())
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
   name       String
   active     Boolean @default(true)
   max_orders Int?
 
   Tickets Ticket[]
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
 }
 
 model Message {
-  id      String  @id @default(uuid())
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
   name    String
   phone   String?
   email   String?
   message String
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
 }
 
 model News {
-  id         String  @id @default(uuid())
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
   title      String
   short_text String  @db.VarChar(2048)
   image      String?
   slug       String  @unique
   active     Boolean @default(true)
   html       String  @db.VarChar(4096)
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
 }
 
 model Order {
-  id       String  @id @default(uuid())
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
   name     String
   email    String
   phone    String?
@@ -68,17 +70,14 @@ model Order {
   has_paid Boolean
 
   Tickets Ticket[]
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
 }
 
 model User {
-  id       String @id @default(uuid())
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
   name     String
   username String
   password String
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
 }
