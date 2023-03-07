@@ -76,14 +76,18 @@
 			icon: contactIcon
 		}
 	];
+
+	function toggleMenuOpen() {
+		menuOpen = !menuOpen;
+	}
 </script>
 
 <div class="flex flex-col min-h-screen text-light-contrast dark:text-dark-contrast">
 	<header
 		class="sticky top-0 z-50 shadow-lg h-16 flex justify-center border-b-2 bg-light-secondary-background border-light-border dark:bg-dark-secondary-background dark:border-dark-border"
 	>
-		<div class="max-w-7xl w-full flex flex-row p-4 justify-between">
-			<a class="grow" href="/">
+		<div class="max-w-7xl w-full flex flex-row p-4 justify-between items-center">
+			<a class="grow h-full" href="/">
 				<img class="h-full" src={$darkTheme ? logoFullDark : logoFull} alt="Minibusservice Logo" />
 			</a>
 			<ul class="hidden lg:flex flex-row gap-10 uppercase font-medium md:text-lg justify-end">
@@ -98,22 +102,22 @@
 					</li>
 				{/each}
 			</ul>
-			<div class="h-full aspect-square ml-10 flex justify-center items-center py-1">
-				<input
-					bind:checked={menuOpen}
-					type="checkbox"
-					class="toggler z-10 h-full aspect-square shrink-0 cursor-pointer opacity-0"
-					aria-label="Open and close sidebar menu"
-				/>
-				<div class="hamburger h-full shrink-0 aspect-square translate-y-1/2 -translate-x-full">
+			<div class="h-full aspect-square flex justify-center items-center p-1 ml-12">
+				<button
+					class="hamburger-icon inline-block relative w-full h-full cursor-pointer"
+					class:open={menuOpen}
+					on:click={toggleMenuOpen}
+				>
 					<div
-						class={`bg-light-contrast dark:bg-dark-contrast relative h-0.5 transition-all rounded-full after:rounded-full before:rounded-full before:bg-light-contrast after:bg-light-contrast before:dark:bg-dark-contrast after:dark:bg-dark-contrast before:absolute after:absolute before:-top-[10px] before:w-full after:w-full before:h-0.5 after:h-0.5 before:transition-all after:transition-all after:top-[10px] ${
-							menuOpen
-								? 'before:top-0 after:top-0  before:rotate-45 after:-rotate-45 bg-transparent'
-								: ''
-						}`}
+						class="line absolute w-full h-0.5 bg-light-contrast dark:bg-dark-contrast transition-all rounded-full top-0 origin-top-left"
 					/>
-				</div>
+					<div
+						class="line middle absolute w-full h-0.5 bg-light-contrast dark:bg-dark-contrast transition-all rounded-full top-1/2 -translate-y-1/2  opacity-1 delay-100"
+					/>
+					<div
+						class="line absolute w-full h-0.5 bg-light-contrast dark:bg-dark-contrast transition-all rounded-full bottom-0 origin-bottom-left"
+					/>
+				</button>
 			</div>
 		</div>
 	</header>
@@ -340,3 +344,18 @@
 		{/each}
 	</nav>
 </div>
+
+<style>
+	.hamburger-icon.open .line:first-child {
+		transform: rotate(45deg) translateX(15%);
+	}
+
+	.hamburger-icon.open .line:last-child {
+		transform: rotate(-45deg) translateX(15%);
+	}
+
+	.hamburger-icon.open .line.middle {
+		width: 0;
+		transition: all 0.1s;
+	}
+</style>

@@ -88,7 +88,7 @@
 			{/if}
 		</p>
 		<a
-			class="text-light-accent dark:text-dark-accent hover:underline font-bold block"
+			class="text-light-accent dark:text-dark-accent hover:underline font-bold w-fit"
 			href="tel:45256161"
 		>
 			{#if $language == 'en'}
@@ -98,7 +98,7 @@
 			{/if}
 		</a>
 		<a
-			class="text-light-accent dark:text-dark-accent hover:underline font-bold block"
+			class="text-light-accent dark:text-dark-accent hover:underline font-bold w-fit"
 			href="mailto:minibusstur@hotmail.com"
 		>
 			{#if $language == 'en'}
