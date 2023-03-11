@@ -41,7 +41,7 @@ model Message {
 
   name    String
   phone   String?
-  email   String?
+  email   String
   message String
 }
 

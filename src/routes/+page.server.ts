@@ -1,7 +1,5 @@
-import { PrismaClient, type News } from '@prisma/client';
-import { error } from '@sveltejs/kit';
-
-const prisma = new PrismaClient();
+import { db } from '$lib/helpers/db';
+import type { News } from '@prisma/client';
 
 /** @type {import('./$types').PageLoad} */
 
@@ -9,7 +7,7 @@ export async function load() {
 	let news: News[] | null = null;
 
 	try {
-		news = await prisma.news.findMany({
+		news = await db.news.findMany({
 			where: {
 				active: true
 			},

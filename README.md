@@ -1,9 +1,22 @@
 ## Developing
 
-Once you've installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install dependencies, create env file, generate prisma client and start the development server with the commands below
 
 ```bash
-npm run dev
+# Install dependencies
+npm install
+
+# Create env
+touch .env
+
+# Add the mysql connection string to the .env file
+echo 'DATABASE_URL="mysql://{your_username}:{your_password}@{your_database_hostname}:{your_port}/{your_database}"' > .env
+# Add your email credentials to the .env file
+echo 'SECRET_EMAIL_ADDRESS="{your_email}"' > .env
+echo 'SECRET_EMAIL_PASSWORD="{your_email_password}"' > .env
+
+# Generate the prisma client
+npx prisma generate
 
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
