@@ -2,6 +2,9 @@
 	import Modal from '$lib/components/modal.svelte';
 	import Button from '$lib/components/button.svelte';
 	import { language } from '$lib/stores/language';
+	import bus from '$lib/assets/icons/sideway_bus.svg';
+	import car from '$lib/assets/icons/sideway_car.svg';
+	import { browser } from '$app/environment';
 
 	let modalOpen = false;
 	let buttonDisabled = false;
@@ -13,6 +16,56 @@
 
 	let error: string | null = null;
 	let success: string | null = null;
+
+	let animation: number;
+
+	$: modalOpen && browser && startAnimation();
+	$: !modalOpen && browser && animation && cancelAnimationFrame(animation);
+
+	function startAnimation() {
+		let animation_speed = 20;
+		let animation_fps = 144;
+
+		setTimeout(() => {
+			const car_elements = document.getElementsByClassName('car');
+			let cars: { car_element: HTMLImageElement; position: number }[] = [];
+
+			// Generate starting positions for cars
+			for (let i = 0; i < car_elements.length; i++) {
+				const car = car_elements[i] as HTMLImageElement;
+				if (car.parentElement?.clientWidth) {
+					let position = Math.floor(Math.random() * car.parentElement?.clientWidth);
+					cars.push({ car_element: car, position });
+				}
+			}
+
+			let then = Date.now();
+			function stepCar() {
+				let now = Date.now();
+				let elapsed = now - then;
+
+				if (elapsed > 1000 / animation_fps) {
+					then = now - (elapsed % animation_fps);
+
+					cars.forEach((car) => {
+						if (
+							car.car_element.parentElement?.clientWidth &&
+							car.position >=
+								car.car_element.parentElement?.clientWidth + car.car_element.clientWidth
+						) {
+							car.position = 0;
+						} else {
+							car.position += animation_speed * (10 / animation_fps);
+							car.car_element.style.right = `${car.position}px`;
+						}
+					});
+				}
+
+				animation = requestAnimationFrame(stepCar);
+			}
+			requestAnimationFrame(stepCar);
+		}, 100);
+	}
 
 	async function sendMessage() {
 		// if fields are not empty
@@ -69,7 +122,43 @@
 	}
 </script>
 
-<Modal visible={modalOpen} closableByUser={false}>Sending message</Modal>
+<Modal visible={modalOpen} closableByUser={false}>
+	<div class="flex h-full flex-col">
+		<h1 class="font-semibold flex justify-center items-center h-full text-2xl">
+			{#if $language == 'en'}
+				Sending message...
+			{:else}
+				Sender melding...
+			{/if}
+		</h1>
+		<div class="mt-auto h-16 relative flex translate-y-3 overflow-hidden">
+			<img src={car} class="h-full dark:invert absolute translate-x-full car" alt="car" />
+			<img src={car} class="h-full dark:invert absolute translate-x-full car" alt="car" />
+			<img
+				src={car}
+				class="h-full dark:invert absolute translate-x-full car hidden sm:block"
+				alt="car"
+			/>
+			<img
+				src={car}
+				class="h-full dark:invert absolute translate-x-full car hidden md:block"
+				alt="car"
+			/>
+			<img
+				src={car}
+				class="h-full dark:invert absolute translate-x-full car hidden lg:block"
+				alt="car"
+			/>
+			<img
+				src={car}
+				class="h-full dark:invert absolute translate-x-full car hidden xl:block"
+				alt="car"
+			/>
+			<img src={bus} class="h-full ml-16 dark:invert animate-bounce" alt="bus" />
+		</div>
+		<div class="w-full h-3 bg-light-contrast dark:bg-dark-contrast mb-4 rounded-md" />
+	</div>
+</Modal>
 
 <div class="md:text-lg flex flex-col md:flex-row mt-2 gap-8">
 	<div class="flex-1 flex flex-col">
