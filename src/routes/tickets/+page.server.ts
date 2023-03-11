@@ -1,7 +1,6 @@
-import { PrismaClient, type Ticket_Group } from '@prisma/client';
+import { db } from '$lib/helpers/db';
+import type { Ticket_Group } from '@prisma/client';
 import { error } from '@sveltejs/kit';
-
-const prisma = new PrismaClient();
 
 /** @type {import('./$types').PageLoad} */
 
@@ -19,8 +18,8 @@ export async function load({ url }: any) {
 			}
 		}
 
-		count = await prisma.ticket_Group.count();
-		ticketGroups = await prisma.ticket_Group.findMany({
+		count = await db.ticket_Group.count();
+		ticketGroups = await db.ticket_Group.findMany({
 			where: {
 				active: true
 			},

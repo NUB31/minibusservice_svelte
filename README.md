@@ -11,6 +11,9 @@ touch .env
 
 # Add the mysql connection string to the .env file
 echo 'DATABASE_URL="mysql://{your_username}:{your_password}@{your_database_hostname}:{your_port}/{your_database}"' > .env
+# Add your email credentials to the .env file
+echo 'SECRET_EMAIL_ADDRESS="{your_email}"' > .env
+echo 'SECRET_EMAIL_PASSWORD="{your_email_password}"' > .env
 
 # Generate the prisma client
 npx prisma generate

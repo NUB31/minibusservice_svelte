@@ -1,7 +1,6 @@
-import { PrismaClient, type News } from '@prisma/client';
+import { db } from '$lib/helpers/db';
+import type { News } from '@prisma/client';
 import { error } from '@sveltejs/kit';
-
-const prisma = new PrismaClient();
 
 /** @type {import('./$types').PageLoad} */
 
@@ -9,7 +8,7 @@ export async function load({ params }: any) {
 	let news: News | null = null;
 
 	try {
-		news = await prisma.news.findUnique({
+		news = await db.news.findUnique({
 			where: { slug: params.slug }
 		});
 	} catch (err) {

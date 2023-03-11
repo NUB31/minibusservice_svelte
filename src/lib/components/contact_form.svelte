@@ -16,8 +16,8 @@
 
 	async function sendMessage() {
 		// if fields are not empty
-		if (!(name && email && phone && message)) {
-			error = 'Please fill in all fields';
+		if (!(name && email && message)) {
+			error = 'Please fill inn all required fields';
 			return;
 		}
 
@@ -134,6 +134,7 @@
 		{/if}
 		<div class="mt-3">
 			<div class="font-semibold">
+				*
 				{#if $language == 'en'}
 					Full name:
 				{:else}
@@ -149,6 +150,7 @@
 		</div>
 		<div class="mt-3 ">
 			<div class="font-semibold">
+				*
 				{#if $language == 'en'}
 					Email:
 				{:else}
@@ -179,6 +181,7 @@
 		</div>
 		<div class="mt-3">
 			<div class="font-semibold">
+				*
 				{#if $language == 'en'}
 					Message:
 				{:else}
